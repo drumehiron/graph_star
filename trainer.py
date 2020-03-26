@@ -187,7 +187,7 @@ def train_inductive(model, optimizer, loader, device, node_classification, node_
 def trainer(args, DATASET, train_loader, val_loader, test_loader, transductive=False,
             num_features=0, num_node_class=0, num_graph_class=0, test_per_epoch=1, val_per_epoch=1, max_epoch=2000,
             save_per_epoch=100, load_model=False, cal_mrr_score=False,
-            node_multi_label=False, graph_multi_label=False, link_prediction=False):
+            node_multi_label=False, graph_multi_label=False, link_prediction=False,modelname="model"):
     if transductive:
         train = train_transductive
     else:
@@ -328,7 +328,7 @@ def trainer(args, DATASET, train_loader, val_loader, test_loader, transductive=F
         print("\033[1;32m", DATASET, "\033[0m", log_str)
         # print("use time : %f" % (time.time()-start))
         if epoch % save_per_epoch == 0:
-            torch.save(model, os.path.join("output", DATASET + ".pkl"))
+            torch.save(model, os.path.join("model", modelname + ".pkl"))
         scheduler.step(train_loss)
     tw.writer.close()
     return max_graph_acc, gc_accs

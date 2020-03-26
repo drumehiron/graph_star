@@ -75,3 +75,4 @@ parser.add_argument('--relation_score_function', type=str, default="DistMult",
                     help="DistMult")
 parser.add_argument('--dataset', type=str,default="")
 parser.add_argument('--epochs', type=int, default=2000)
+parser.add_argument('--modelname', type=str, default="model")
